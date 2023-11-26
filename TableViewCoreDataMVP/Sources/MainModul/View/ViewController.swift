@@ -7,7 +7,12 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+protocol UserViewProtocol: AnyObject {
+    func showUsers(users: [User])}
+
+class ViewController: UIViewController, UserViewProtocol {
+    func showUsers(users: [User]) {}
+    var presenter: PresenterType?
     
     // MARK: - Outlets
     
@@ -85,6 +90,7 @@ class ViewController: UIViewController {
     
     private func setupView() {
         view.backgroundColor = .systemGray6
+        presenter?.fetchAllUsers()
     }
     
     private func setupHierarhy() {
@@ -114,19 +120,50 @@ class ViewController: UIViewController {
     
     // MARK: - Actions
     
-    @objc private func buttonAction() {}
+    @objc private func buttonAction() {
+        if textField.text != "" {
+            
+            presenter?.saveUserName(name: textField.text ?? "")
+                presenter?.fetchAllUsers()
+                self.tableView.reloadData()
+                
+            } else {
+                let alert = UIAlertController(title: "Nothing was written", message: "Please enter the name in textfield", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: .cancel))
+                self.present(alert,animated: true)
+            }
+            self.textField.text = ""
+    }
     
 }
 
 extension ViewController: UITableViewDataSource, UITableViewDelegate {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
-    }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 40
+    }
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return presenter?.users.count ?? 0
+    }
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        cell.textLabel?.text = presenter?.users[indexPath.row].name
         cell.accessoryType = .disclosureIndicator
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath){
+        
+        if editingStyle == .delete {
+            tableView.beginUpdates()
+            presenter?.deleteUser(indexPath: indexPath)
+            presenter?.users.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            tableView.endUpdates()
+        }
     }
 }
 
