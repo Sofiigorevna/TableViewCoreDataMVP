@@ -7,12 +7,11 @@
 
 import UIKit
 
-protocol UserViewProtocol: AnyObject {
-    func showUsers(users: [User])}
+protocol UserViewProtocol: AnyObject {}
 
 class ViewController: UIViewController, UserViewProtocol {
-    func showUsers(users: [User]) {}
-    var presenter: PresenterType?
+    
+    var mainPresenter: MainPresenter?
     
     // MARK: - Outlets
     
@@ -30,6 +29,7 @@ class ViewController: UIViewController, UserViewProtocol {
         let textField = UITextField()
         textField.placeholder = "    Print your name here"
         textField.keyboardType = .default
+        textField.autocapitalizationType = .words
         textField.textAlignment = .center
         textField.backgroundColor = .tertiarySystemFill
         textField.layer.cornerRadius = 14
@@ -90,7 +90,8 @@ class ViewController: UIViewController, UserViewProtocol {
     
     private func setupView() {
         view.backgroundColor = .systemGray6
-        presenter?.fetchAllUsers()
+        mainPresenter?.fetchAllUsers()
+        tableView.reloadData()
     }
     
     private func setupHierarhy() {
@@ -123,8 +124,8 @@ class ViewController: UIViewController, UserViewProtocol {
     @objc private func buttonAction() {
         if textField.text != "" {
             
-            presenter?.saveUserName(name: textField.text ?? "")
-                presenter?.fetchAllUsers()
+            mainPresenter?.saveUserName(name: textField.text ?? "")
+            mainPresenter?.fetchAllUsers()
                 self.tableView.reloadData()
                 
             } else {
@@ -144,13 +145,13 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return presenter?.users.count ?? 0
+        return mainPresenter?.users.count ?? 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = presenter?.users[indexPath.row].name
+        cell.textLabel?.text = mainPresenter?.users[indexPath.row].name
         cell.accessoryType = .disclosureIndicator
         return cell
     }
@@ -159,22 +160,21 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         
         if editingStyle == .delete {
             tableView.beginUpdates()
-            presenter?.deleteUser(indexPath: indexPath)
-            presenter?.users.remove(at: indexPath.row)
+            mainPresenter?.deleteUser(indexPath: indexPath)
+            mainPresenter?.users.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
             tableView.endUpdates()
         }
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        mainPresenter?.showDetail(data: (mainPresenter?.users[indexPath.row])!)
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
 }
 
-extension UIViewController {
-    func hideKeyboardWhenTappedAround() {
-        let tap = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
-        tap.cancelsTouchesInView = false
-        view.addGestureRecognizer(tap)
-    }
-    
-    @objc func dismissKeyboard() {
-        view.endEditing(true)
+extension ViewController{
+    func set(presenter: MainPresenter){
+        self.mainPresenter = presenter
     }
 }

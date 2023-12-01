@@ -12,6 +12,7 @@ protocol CoreDataManagerType {
     func saveUserName(_ name: String)
     func deleteUser(user: User)
     func fetchAllUsers()  -> [User]?
+    func saveUserAge(_ dateOfBirth: String)
     func updateUser(_ user: User,
                       _ photoImage: String?,
                       _ name: String?,
@@ -47,13 +48,23 @@ class CoreDataManager: CoreDataManagerType {
         newUser.name = name
         saveContext()
     }
+    
+    func saveUserAge(_ dateOfBirth: String) {
+        guard let entityDescription = NSEntityDescription.entity(forEntityName: "User",
+                                                                 in: context) else {return}
+        let newUser = User(entity: entityDescription,
+                               insertInto: context)
+        newUser.dateOfBirth = dateOfBirth
+        saveContext()
+    }
 
     func updateUser(_ user: User,
                       _ photoImage: String?,
                       _ name: String?,
                       _ dateOfBirth: String?,
                       _ gender: String?) {
-
+        
+       
         if let photoImage = photoImage {
             user.photoImage = photoImage
         }
@@ -88,13 +99,11 @@ class CoreDataManager: CoreDataManagerType {
     // MARK: - Core Data Saving support
 
     private func saveContext () {
-        if context.hasChanges {
             do {
-                try context.save()
+                try self.context.save()
             } catch {
                 let nserror = error as NSError
                 fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
             }
-        }
     }
 }
