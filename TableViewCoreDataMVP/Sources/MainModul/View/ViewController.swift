@@ -84,6 +84,7 @@ class ViewController: UIViewController, UserViewProtocol {
         navigationController?.navigationBar.backItem?.title = ""
         
         let backBarButton = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        backBarButton.tintColor = .darkGray
         navigationItem.backBarButtonItem = backBarButton
     }
     
@@ -173,7 +174,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
     }
 }
 
-extension ViewController{
+extension ViewController {
     func set(presenter: MainPresenter){
         self.mainPresenter = presenter
     }
