@@ -21,3 +21,4 @@ static let shared = ShowAlert()
 
     private override init() {}
 }
+

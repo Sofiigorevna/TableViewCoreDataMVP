@@ -25,12 +25,12 @@ class DetailViewController: UIViewController, UserViewProtocol {
     
     private lazy var icon: UIImageView = {
         var imageView = UIImageView()
-                if let avatarData = presenter?.user?.avatar {
-                     imageView = UIImageView(image: UIImage(data: avatarData))
-                } else {
-                     imageView = UIImageView(image: UIImage(systemName: "person.fill"))
-
-                }
+        if let avatarData = presenter?.user?.avatar {
+            imageView = UIImageView(image: UIImage(data: avatarData))
+        } else {
+            imageView = UIImageView(image: UIImage(systemName: "person.fill"))
+            
+        }
         imageView.clipsToBounds = true
         imageView.contentMode = .scaleAspectFill
         imageView.tintColor = .darkGray
@@ -151,7 +151,6 @@ class DetailViewController: UIViewController, UserViewProtocol {
         self.hideKeyboardWhenTappedAround()
     }
     
-    
     // MARK: - Setup
     
     private func setupNavigationBar() {
@@ -165,7 +164,7 @@ class DetailViewController: UIViewController, UserViewProtocol {
         
         textFieldAge.inputView = datePicker
         textFieldAge.inputAccessoryView = toolBar
-
+        
         datePicker.datePickerMode = .date
         datePicker.preferredDatePickerStyle = .wheels
         
@@ -183,7 +182,6 @@ class DetailViewController: UIViewController, UserViewProtocol {
     private func setupPickerGender() {
         pickerView.delegate = self
         pickerView.dataSource = self
-        
         textFieldGender.inputView = pickerView
     }
     
@@ -196,7 +194,6 @@ class DetailViewController: UIViewController, UserViewProtocol {
         viewContainer.addSubview(icon)
         view.addSubview(buttonOpenGallery)
         view.addSubview(textFieldStack)
-        
     }
     
     private func setupLayout() {
@@ -208,14 +205,14 @@ class DetailViewController: UIViewController, UserViewProtocol {
             
             icon.centerXAnchor.constraint(equalTo: viewContainer.centerXAnchor),
             icon.centerYAnchor.constraint(equalTo: viewContainer.centerYAnchor),
-
+            
             icon.widthAnchor.constraint(equalToConstant: 250),
             icon.heightAnchor.constraint(equalToConstant: 250),
             
             buttonOpenGallery.centerXAnchor.constraint(equalTo: viewContainer.centerXAnchor),
             buttonOpenGallery.bottomAnchor.constraint(equalTo: textFieldStack.topAnchor, constant: -10),
-
-
+            
+            
             textFieldStack.topAnchor.constraint(equalTo: viewContainer.bottomAnchor, constant: 60),
             textFieldStack.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 11),
             textFieldStack.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -14),
@@ -252,7 +249,7 @@ class DetailViewController: UIViewController, UserViewProtocol {
         formater.dateFormat = "dd.MM.yyyy"
         textFieldAge.text = formater.string(from: datePicker.date)
     }
-   
+    
     private func saveData() {
         if let user = presenter?.user {
             presenter?.updateUser(user: user ,
@@ -271,7 +268,7 @@ class DetailViewController: UIViewController, UserViewProtocol {
             editButton.configuration?.baseBackgroundColor = .magenta
             
             buttonOpenGallery.isHidden = false
-
+            
             textFieldName.isUserInteractionEnabled = true
             textFieldName.borderStyle = .bezel
             
@@ -287,7 +284,7 @@ class DetailViewController: UIViewController, UserViewProtocol {
             editButton.configuration?.baseBackgroundColor = .clear
             
             buttonOpenGallery.isHidden = true
-
+            
             textFieldName.isUserInteractionEnabled = false
             textFieldName.borderStyle = .none
             
@@ -361,8 +358,6 @@ extension DetailViewController: UIImagePickerControllerDelegate, UINavigationCon
             }
         }
         dismiss(animated: true)
-        
-        
     }
     
 }
