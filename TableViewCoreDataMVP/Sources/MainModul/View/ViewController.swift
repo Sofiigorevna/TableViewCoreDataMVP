@@ -70,6 +70,10 @@ class ViewController: UIViewController, UserViewProtocol {
         self.hideKeyboardWhenTappedAround()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        tableView.reloadData()
+    }
+    
     // MARK: - Setup
     
     private func setupNavigationBar() {
@@ -88,7 +92,6 @@ class ViewController: UIViewController, UserViewProtocol {
         navigationItem.backBarButtonItem = backBarButton
     }
     
-    
     private func setupView() {
         view.backgroundColor = .systemGray6
         mainPresenter?.fetchAllUsers()
@@ -104,19 +107,19 @@ class ViewController: UIViewController, UserViewProtocol {
     
     private func setupLayout() {
         NSLayoutConstraint.activate([
-            textFieldStack.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -14),
+            textFieldStack.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            textFieldStack.widthAnchor.constraint(equalToConstant: 400),
+            textFieldStack.heightAnchor.constraint(equalToConstant: 120),
             textFieldStack.topAnchor.constraint(equalTo: view.topAnchor, constant: 160),
-            textFieldStack.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -595),
-            textFieldStack.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 11),
             
             textField.widthAnchor.constraint(equalToConstant: 355),
+            
             button.widthAnchor.constraint(equalToConstant: 355),
             
             tableView.heightAnchor.constraint(equalToConstant: 500),
             tableView.topAnchor.constraint(equalTo: textFieldStack.bottomAnchor, constant: 10),
             tableView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 11),
             tableView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -14),
-            
         ])
     }
     
@@ -127,16 +130,13 @@ class ViewController: UIViewController, UserViewProtocol {
             
             mainPresenter?.saveUserName(name: textField.text ?? "")
             mainPresenter?.fetchAllUsers()
-                self.tableView.reloadData()
-                
-            } else {
-                let alert = UIAlertController(title: "Nothing was written", message: "Please enter the name in textfield", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "Ok", style: .cancel))
-                self.present(alert,animated: true)
-            }
-            self.textField.text = ""
+            self.tableView.reloadData()
+            
+        } else {
+            ShowAlert.shared.alert(view: self, title: "Nothing was written", message: "Please enter the name in textfield")
+        }
+        self.textField.text = ""
     }
-    
 }
 
 extension ViewController: UITableViewDataSource, UITableViewDelegate {
@@ -144,11 +144,11 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 40
     }
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return mainPresenter?.users.count ?? 0
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
