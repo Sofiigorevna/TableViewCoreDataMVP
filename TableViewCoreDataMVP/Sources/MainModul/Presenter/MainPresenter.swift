@@ -6,7 +6,7 @@
 //
 
 import Foundation
- 
+
 protocol MainPresenterType {
     var users: [User] {get}
     func fetchAllUsers()

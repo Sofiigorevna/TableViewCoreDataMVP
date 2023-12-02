@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7C132B232B1BC84100EE036F /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C132B222B1BC84100EE036F /* Alert.swift */; };
 		7C4B08A72B13A74B00C00BD6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4B08A62B13A74B00C00BD6 /* AppDelegate.swift */; };
 		7C4B08AB2B13A74B00C00BD6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4B08AA2B13A74B00C00BD6 /* ViewController.swift */; };
 		7C4B08B12B13A74B00C00BD6 /* TableViewCoreDataMVP.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7C4B08AF2B13A74B00C00BD6 /* TableViewCoreDataMVP.xcdatamodeld */; };
@@ -18,14 +19,15 @@
 		7C4B08D32B152AFA00C00BD6 /* UIViewConroller+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4B08D22B152AFA00C00BD6 /* UIViewConroller+Ext.swift */; };
 		7C4B08D62B152C9A00C00BD6 /* DetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4B08D52B152C9A00C00BD6 /* DetailPresenter.swift */; };
 		7C4B08D82B1772A000C00BD6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4B08D72B1772A000C00BD6 /* SceneDelegate.swift */; };
-		7C4B08DA2B17E4D100C00BD6 /* DependencyFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4B08D92B17E4D100C00BD6 /* DependencyFactory.swift */; };
-		7C4B08DC2B17E6D200C00BD6 /* AbstractCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4B08DB2B17E6D200C00BD6 /* AbstractCoordinator.swift */; };
-		7C4B08DE2B17E72800C00BD6 /* RootCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4B08DD2B17E72800C00BD6 /* RootCoordinator.swift */; };
-		7C4B08E02B17E78B00C00BD6 /* ProjectCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4B08DF2B17E78B00C00BD6 /* ProjectCoordinator.swift */; };
 		7C4B08E22B17E8F400C00BD6 /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4B08E12B17E8F400C00BD6 /* MainPresenter.swift */; };
+		7C4B08E82B1A52B200C00BD6 /* DependencyFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4B08E72B1A52B200C00BD6 /* DependencyFactory.swift */; };
+		7C4B08EA2B1A52BF00C00BD6 /* RootCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4B08E92B1A52BF00C00BD6 /* RootCoordinator.swift */; };
+		7C4B08EE2B1A52E100C00BD6 /* AbstractCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4B08ED2B1A52E100C00BD6 /* AbstractCoordinator.swift */; };
+		7C4B08F02B1A531000C00BD6 /* ProjectCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4B08EF2B1A531000C00BD6 /* ProjectCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7C132B222B1BC84100EE036F /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		7C4B08A32B13A74B00C00BD6 /* TableViewCoreDataMVP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TableViewCoreDataMVP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C4B08A62B13A74B00C00BD6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7C4B08AA2B13A74B00C00BD6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -39,11 +41,11 @@
 		7C4B08D22B152AFA00C00BD6 /* UIViewConroller+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewConroller+Ext.swift"; sourceTree = "<group>"; };
 		7C4B08D52B152C9A00C00BD6 /* DetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPresenter.swift; sourceTree = "<group>"; };
 		7C4B08D72B1772A000C00BD6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		7C4B08D92B17E4D100C00BD6 /* DependencyFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyFactory.swift; sourceTree = "<group>"; };
-		7C4B08DB2B17E6D200C00BD6 /* AbstractCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractCoordinator.swift; sourceTree = "<group>"; };
-		7C4B08DD2B17E72800C00BD6 /* RootCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootCoordinator.swift; sourceTree = "<group>"; };
-		7C4B08DF2B17E78B00C00BD6 /* ProjectCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectCoordinator.swift; sourceTree = "<group>"; };
 		7C4B08E12B17E8F400C00BD6 /* MainPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
+		7C4B08E72B1A52B200C00BD6 /* DependencyFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyFactory.swift; sourceTree = "<group>"; };
+		7C4B08E92B1A52BF00C00BD6 /* RootCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootCoordinator.swift; sourceTree = "<group>"; };
+		7C4B08ED2B1A52E100C00BD6 /* AbstractCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractCoordinator.swift; sourceTree = "<group>"; };
+		7C4B08EF2B1A531000C00BD6 /* ProjectCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +100,8 @@
 			isa = PBXGroup;
 			children = (
 				7C4B08BF2B13A90F00C00BD6 /* App */,
+				7C4B08E52B1A119B00C00BD6 /* Factory */,
+				7C4B08E62B1A11B400C00BD6 /* Coordinator */,
 				7C4B08C52B13A9A900C00BD6 /* Core */,
 				7C4B08C02B13A95700C00BD6 /* MainModul */,
 				7C4B08CC2B13B4DC00C00BD6 /* DetailModul */,
@@ -110,8 +114,6 @@
 			children = (
 				7C4B08A62B13A74B00C00BD6 /* AppDelegate.swift */,
 				7C4B08D72B1772A000C00BD6 /* SceneDelegate.swift */,
-				7C4B08E52B1A119B00C00BD6 /* Factory */,
-				7C4B08E62B1A11B400C00BD6 /* Coordinator */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -162,6 +164,7 @@
 			isa = PBXGroup;
 			children = (
 				7C4B08D02B152AC600C00BD6 /* TextField+Ext.swift */,
+				7C132B222B1BC84100EE036F /* Alert.swift */,
 				7C4B08D22B152AFA00C00BD6 /* UIViewConroller+Ext.swift */,
 			);
 			path = Extensions;
@@ -178,7 +181,7 @@
 		7C4B08E52B1A119B00C00BD6 /* Factory */ = {
 			isa = PBXGroup;
 			children = (
-				7C4B08D92B17E4D100C00BD6 /* DependencyFactory.swift */,
+				7C4B08E72B1A52B200C00BD6 /* DependencyFactory.swift */,
 			);
 			path = Factory;
 			sourceTree = "<group>";
@@ -186,9 +189,9 @@
 		7C4B08E62B1A11B400C00BD6 /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
-				7C4B08DD2B17E72800C00BD6 /* RootCoordinator.swift */,
-				7C4B08DF2B17E78B00C00BD6 /* ProjectCoordinator.swift */,
-				7C4B08DB2B17E6D200C00BD6 /* AbstractCoordinator.swift */,
+				7C4B08E92B1A52BF00C00BD6 /* RootCoordinator.swift */,
+				7C4B08EF2B1A531000C00BD6 /* ProjectCoordinator.swift */,
+				7C4B08ED2B1A52E100C00BD6 /* AbstractCoordinator.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -263,19 +266,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7C4B08DA2B17E4D100C00BD6 /* DependencyFactory.swift in Sources */,
 				7C4B08C72B13A9BE00C00BD6 /* CoreDataManager.swift in Sources */,
 				7C4B08D32B152AFA00C00BD6 /* UIViewConroller+Ext.swift in Sources */,
 				7C4B08D62B152C9A00C00BD6 /* DetailPresenter.swift in Sources */,
+				7C132B232B1BC84100EE036F /* Alert.swift in Sources */,
 				7C4B08AB2B13A74B00C00BD6 /* ViewController.swift in Sources */,
+				7C4B08EE2B1A52E100C00BD6 /* AbstractCoordinator.swift in Sources */,
 				7C4B08A72B13A74B00C00BD6 /* AppDelegate.swift in Sources */,
+				7C4B08E82B1A52B200C00BD6 /* DependencyFactory.swift in Sources */,
+				7C4B08EA2B1A52BF00C00BD6 /* RootCoordinator.swift in Sources */,
+				7C4B08F02B1A531000C00BD6 /* ProjectCoordinator.swift in Sources */,
 				7C4B08D82B1772A000C00BD6 /* SceneDelegate.swift in Sources */,
 				7C4B08CE2B13B52200C00BD6 /* DetailViewController.swift in Sources */,
-				7C4B08E02B17E78B00C00BD6 /* ProjectCoordinator.swift in Sources */,
-				7C4B08DC2B17E6D200C00BD6 /* AbstractCoordinator.swift in Sources */,
 				7C4B08E22B17E8F400C00BD6 /* MainPresenter.swift in Sources */,
 				7C4B08B12B13A74B00C00BD6 /* TableViewCoreDataMVP.xcdatamodeld in Sources */,
-				7C4B08DE2B17E72800C00BD6 /* RootCoordinator.swift in Sources */,
 				7C4B08D12B152AC600C00BD6 /* TextField+Ext.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

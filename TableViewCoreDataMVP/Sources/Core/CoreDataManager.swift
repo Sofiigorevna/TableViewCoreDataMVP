@@ -14,7 +14,7 @@ protocol CoreDataManagerType {
     func fetchAllUsers()  -> [User]?
     func saveUserAge(_ dateOfBirth: String)
     func updateUser(_ user: User,
-                      _ photoImage: String?,
+                      _ avatar: Data?,
                       _ name: String?,
                       _ dateOfBirth: String?,
                       _ gender: String?)
@@ -59,14 +59,14 @@ class CoreDataManager: CoreDataManagerType {
     }
 
     func updateUser(_ user: User,
-                      _ photoImage: String?,
+                      _ avatar: Data?,
                       _ name: String?,
                       _ dateOfBirth: String?,
                       _ gender: String?) {
         
        
-        if let photoImage = photoImage {
-            user.photoImage = photoImage
+        if let avatar = avatar {
+            user.avatar = avatar
         }
         if let name = name {
             user.name = name

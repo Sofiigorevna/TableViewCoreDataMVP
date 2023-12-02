@@ -13,7 +13,7 @@ protocol DetailPresenterType {
     var user: User? { get set }
     var view: UserViewProtocol? { get set }
     func updateUser(
-        user: User, photoImage: String?,
+        user: User, avatar: Data?,
         name: String?,
         dateOfBirth: String?,
         gender: String?)
@@ -33,11 +33,11 @@ class DetailPresenter: DetailPresenterType  {
     }
     
     func updateUser( user: User,
-                     photoImage: String?,
+                     avatar: Data?,
                      name: String?,
                      dateOfBirth: String?,
                      gender: String?) {
         
-        coreDataManager.updateUser(user, photoImage, name, dateOfBirth, gender)
+        coreDataManager.updateUser(user, avatar, name, dateOfBirth, gender)
     }
 }

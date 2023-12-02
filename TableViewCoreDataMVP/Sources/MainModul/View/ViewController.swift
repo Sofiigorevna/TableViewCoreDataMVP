@@ -70,6 +70,10 @@ class ViewController: UIViewController, UserViewProtocol {
         self.hideKeyboardWhenTappedAround()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        tableView.reloadData()
+    }
+
     // MARK: - Setup
     
     private func setupNavigationBar() {
@@ -83,7 +87,7 @@ class ViewController: UIViewController, UserViewProtocol {
         navigationController?.navigationBar.backIndicatorTransitionMaskImage = backButton
         navigationController?.navigationBar.backItem?.title = ""
         
-        let backBarButton = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        let backBarButton = UIBarButtonItem(title: "", style: .plain, target: self, action: #selector(updateTableView))
         backBarButton.tintColor = .darkGray
         navigationItem.backBarButtonItem = backBarButton
     }
@@ -110,6 +114,7 @@ class ViewController: UIViewController, UserViewProtocol {
             textFieldStack.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 11),
             
             textField.widthAnchor.constraint(equalToConstant: 355),
+            
             button.widthAnchor.constraint(equalToConstant: 355),
             
             tableView.heightAnchor.constraint(equalToConstant: 500),
@@ -122,6 +127,10 @@ class ViewController: UIViewController, UserViewProtocol {
     
     // MARK: - Actions
     
+    @objc private func updateTableView() {
+        self.tableView.reloadData()
+    }
+    
     @objc private func buttonAction() {
         if textField.text != "" {
             
@@ -130,9 +139,7 @@ class ViewController: UIViewController, UserViewProtocol {
                 self.tableView.reloadData()
                 
             } else {
-                let alert = UIAlertController(title: "Nothing was written", message: "Please enter the name in textfield", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "Ok", style: .cancel))
-                self.present(alert,animated: true)
+                ShowAlert.shared.alert(view: self, title: "Nothing was written", message: "Please enter the name in textfield")
             }
             self.textField.text = ""
     }
