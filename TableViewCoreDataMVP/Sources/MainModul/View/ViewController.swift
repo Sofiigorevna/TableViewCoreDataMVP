@@ -93,7 +93,6 @@ class ViewController: UIViewController, UserViewProtocol {
     }
     
     private func setupView() {
-        view.backgroundColor = .systemGray6
         mainPresenter?.fetchAllUsers()
         tableView.reloadData()
     }

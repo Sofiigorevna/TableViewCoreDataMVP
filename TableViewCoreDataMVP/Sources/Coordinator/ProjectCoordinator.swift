@@ -7,6 +7,14 @@
 
 import UIKit
 
+protocol AbstractCoordinator {
+    func addChildCoordinator(_ coordinator: AbstractCoordinator)
+}
+
+protocol RootCoordinator: AnyObject {
+    func start(_ navigationController: UINavigationController)
+}
+
 class ProjectCoordinator: AbstractCoordinator, RootCoordinator {
    
     
